@@ -1,0 +1,10 @@
+#sudo docker compose up -d
+services:
+  fluentd:
+    image: fluentd_prueba:latest
+    container_name: fluentd_prueba_container
+    volumes:
+      - /var/log:/var/log:ro
+      - /var/log/journal:/var/log/journal:ro
+    restart: unless-stopped
+
