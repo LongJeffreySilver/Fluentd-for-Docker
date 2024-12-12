@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Instalamos plugins necesarios:
 # - fluent-plugin-systemd: para leer logs de systemd
 # - fluent-plugin-docker_metadata_filter: para procesar metadatos de contenedores Docker
-RUN gem install fluent-plugin-systemd fluent-plugin-docker_metadata_filter
+# - fluent-plugin-prometheus: para exponer un endpoint con metricas en formato Prometheus
+# - fluent-plugin-metrics: para extraer metricas de salud del host como el uso de cpu o la memoria -> NO FUNCIONA YA :C
+RUN gem install fluent-plugin-systemd fluent-plugin-docker_metadata_filter fluent-plugin-prometheus 
 
 # Creamos el directorio de configuración si no existe y ponemos los permisos al root.
 #Usuario fluent quitado -> RUN mkdir -p /fluentd/log && chown fluent:fluent /fluentd/log

@@ -6,5 +6,7 @@ services:
     volumes:
       - /var/log:/var/log:ro
       - /var/log/journal:/var/log/journal:ro
+    ports:
+      - "24231:24231"
     restart: unless-stopped
 
